@@ -317,7 +317,7 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
         ):
             progress = task.progress()
             task_msg += (
-                f"\n<blockquote>{get_progress_bar_string(progress)} {progress}"
+                f"\n<blockquote>{get_progress_bar_string(progress)} | {task.speed()}"
             )
             if (
                 task.listener
@@ -338,11 +338,10 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
             else:
                 subsize = ""
                 count = ""
-            task_msg += f"\n<b>Processed:</b> {task.processed_bytes()}{subsize}"
+            task_msg += f"\n<b>{task.processed_bytes()}{subsize} of </b>"
             if count:
                 task_msg += f"\n<b>Count:</b> {count}"
-            task_msg += f"\n<b>Size:</b> {task.size()}"
-            task_msg += f"\n<b>Speed:</b> {task.speed()}"
+            task_msg += f"\n<b>{task.size()}</b>"
             task_msg += f"\n<b>Estimated:</b> {task.eta()}"
             if task.listener and (
                 (
@@ -352,7 +351,7 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
                 or task.listener.is_qbit
             ):
                 with contextlib.suppress(Exception):
-                    task_msg += f"\n<b>Seeders:</b> {task.seeders_num()} | <b>Leechers:</b> {task.leechers_num()}"
+                    task_msg += f"\n<b>{task.seeders_num()}/{task.leechers_num()}</b> | "
         elif tstatus == MirrorStatus.STATUS_SEED:
             task_msg += f"\n<blockquote><b>Size: </b>{task.size()}"
             task_msg += f"\n<b>Speed: </b>{task.seed_speed()}"
