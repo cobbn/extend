@@ -341,7 +341,7 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
             task_msg += f"\n<b>{task.processed_bytes()}{subsize} of </b>"
             if count:
                 task_msg += f"\n<b>Count:</b> {count}"
-            task_msg += f"\n<b>{task.size()}</b>"
+            task_msg += f"<b>{task.size()}</b>"
             task_msg += f"\n<b>Estimated:</b> {task.eta()}"
             if task.listener and (
                 (
@@ -352,7 +352,7 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
             ):
                 with contextlib.suppress(Exception):
                     task_msg += (
-                        f"\n<b>{task.seeders_num()}/{task.leechers_num()}</b> | "
+                        f"<b> | {task.seeders_num()}/{task.leechers_num()}</b>"
                     )
         elif tstatus == MirrorStatus.STATUS_SEED:
             task_msg += f"\n<blockquote><b>Size: </b>{task.size()}"
