@@ -101,7 +101,7 @@ jobs:
           HD_TELEGRAM_HASH: ${{ inputs.TELEGRAM_HASH || secrets.TELEGRAM_HASH }}
           HD_DATABASE_URL: ${{ inputs.DATABASE_URL || secrets.DATABASE_URL }}
           HD_BOT_TOKEN: ${{ inputs.BOT_TOKEN || secrets.BOT_TOKEN }}
-          HD_HEROKU_APP_NAME: ${{ inputs.HEROKU_APP_NAME || secrets.HEROKU_APP_NAME }}
-          HD_HEROKU_API_KEY: ${{ inputs.HEROKU_API_KEY || secrets.HEROKU_API_KEY }}
           HD_UPSTREAM_REPO: ${{ inputs.UPSTREAM_REPO || secrets.UPSTREAM_REPO }}
           HD_UPSTREAM_BRANCH: ${{ inputs.UPSTREAM_BRANCH || secrets.UPSTREAM_BRANCH }}
+          HD_HEROKU_APP_NAME: ${{ inputs.HEROKU_APP_NAME || secrets.HEROKU_APP_NAME }}
+          HD_HEROKU_API_KEY: ${{ inputs.HEROKU_API_KEY || secrets.HEROKU_API_KEY }}
