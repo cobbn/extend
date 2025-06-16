@@ -555,11 +555,12 @@ async def _cleanup_mega_apis(api, folder_api, executor):
                 LOGGER.warning(f"Error setting executor event: {e}")
 
         # Mark cleanup mode to ignore access denied errors during logout
-        if hasattr(executor, "continue_event") and hasattr(
-            executor.continue_event, "listener"
+        if (
+            hasattr(executor, "continue_event")
+            and hasattr(executor.continue_event, "listener")
+            and hasattr(executor.continue_event.listener, "_cleanup_mode")
         ):
-            if hasattr(executor.continue_event.listener, "_cleanup_mode"):
-                executor.continue_event.listener._cleanup_mode = True
+            executor.continue_event.listener._cleanup_mode = True
 
         # Logout directly without using executor to avoid timeout issues
         if api:

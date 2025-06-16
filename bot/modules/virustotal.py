@@ -48,13 +48,12 @@ def _extract_scan_data(result: dict) -> dict:
                 isinstance(engine_data, dict)
                 and engine_data.get("result")
                 and engine_data.get("result") != "clean"
-            ):
-                if engine_data["result"] not in [
-                    "unrated",
-                    "timeout",
-                    "type-unsupported",
-                ]:
-                    signatures.append(f"{engine_name}: {engine_data['result']}")
+            ) and engine_data["result"] not in [
+                "unrated",
+                "timeout",
+                "type-unsupported",
+            ]:
+                signatures.append(f"{engine_name}: {engine_data['result']}")
 
     return {
         "stats": stats,
