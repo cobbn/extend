@@ -211,22 +211,22 @@ def get_progress_bar_string(pct):
         # Check if the cleaned string is 'N/A' or other non-numeric values
         if pct_clean.upper() == "N/A" or pct_clean == "-" or not pct_clean:
             # Return empty progress bar for unknown progress
-            return "○" * 10
+            return "⬡"" * 10
 
         try:
             pct = float(pct_clean)
         except ValueError:
             # If conversion fails, return empty progress bar
-            return "○" * 10
+            return "⬡"" * 10
 
     # Ensure pct is a number
     if not isinstance(pct, int | float):
-        return "○" * 10
+        return "⬡"" * 10
 
     p = min(max(pct, 0), 100)
     c_full = int((p + 5) // 10)
-    p_str = "●" * c_full
-    p_str += "○" * (10 - c_full)
+    p_str = "⬢ * c_full
+    p_str += "⬡"" * (10 - c_full)
     return p_str
 
 
@@ -293,8 +293,8 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
         if is_super_chat:
             task_msg += f"<b>{index + start_position}. <a href='{task.listener.message.link}'>{tstatus}</a>: </b>"
         else:
-            task_msg += f"<b>{index + start_position}. {tstatus}: </b>"
-        task_msg += f"[<code>{escape(task_name)}</code>]"
+            task_msg += f"<b>{index + start_position}. </b>"
+        task_msg += f"<code>{escape(task_name)}</code>"
 
         # Truncate subname if too long
         if (
@@ -307,7 +307,7 @@ async def get_readable_message(sid, is_user, page_no=1, status="All", page_step=
                 subname = subname[:37] + "..."
             task_msg += f"\n<i>{subname}</i>"
         if task.listener:
-            task_msg += f"\nby <b>{source(task.listener)}</b>"
+            task_msg += f" | <b>{source(task.listener)}</b>"
         else:
             task_msg += "\nby <b>Unknown</b>"
         if (
