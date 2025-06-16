@@ -25,12 +25,6 @@ on:
       DATABASE_URL:
         description: "Database URL from MongoDB"
         required: true
-      UPSTREAM_REPO:
-        description: "upstream repo for bot"
-        required: true
-      UPSTREAM_BRANCH:
-        description: "branch for upstream"
-        required: true
       TELEGRAM_API:
         description: "Telegram API ID from https://my.telegram.org/"
         required: true
@@ -101,7 +95,5 @@ jobs:
           HD_TELEGRAM_HASH: ${{ inputs.TELEGRAM_HASH || secrets.TELEGRAM_HASH }}
           HD_DATABASE_URL: ${{ inputs.DATABASE_URL || secrets.DATABASE_URL }}
           HD_BOT_TOKEN: ${{ inputs.BOT_TOKEN || secrets.BOT_TOKEN }}
-          HD_UPSTREAM_REPO: ${{ inputs.UPSTREAM_REPO || secrets.UPSTREAM_REPO }}
-          HD_UPSTREAM_BRANCH: ${{ inputs.UPSTREAM_BRANCH || secrets.UPSTREAM_BRANCH }}
           HD_HEROKU_APP_NAME: ${{ inputs.HEROKU_APP_NAME || secrets.HEROKU_APP_NAME }}
           HD_HEROKU_API_KEY: ${{ inputs.HEROKU_API_KEY || secrets.HEROKU_API_KEY }}
